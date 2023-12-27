@@ -46,4 +46,4 @@ server.listen(port, () => {
     console.log("Server Started. https://localhost");
 }); */
 
-server.listen(80, 'lkknodejs.newmedia.tw');
+server.listen(3000, 'lkknodejs.newmedia.tw');
