@@ -36,6 +36,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log("Server Started. https://localhost");
+server.listen(80, () => {
+    console.log("Server Started. https://lkknodejs.newmedia.tw/");
 });
