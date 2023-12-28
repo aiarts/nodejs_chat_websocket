@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
     // 發送人數給網頁
     io.emit("online", onlineCount);
 
-    socket.on("greet", () => {
+    socket.on("greetnod", () => {
         socket.emit("greet", onlineCount);
     });
 
@@ -43,6 +43,6 @@ io.on('connection', (socket) => {
 // 監聽 port
 var port = process.env.PORT || 3000;
 server.listen(port, () => {
-    console.log("Server Started. https://lkknodejs.newmedia.tw");
+    console.log("Server Started. http://localhost:3000");
 }); 
 
