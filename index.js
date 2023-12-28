@@ -41,9 +41,8 @@ io.on('connection', (socket) => {
 }); */
 
 // 監聽 port
-/* var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3000;
 server.listen(port, () => {
-    console.log("Server Started. https://localhost");
-}); */
+    console.log("Server Started. https://lkknodejs.newmedia.tw");
+}); 
 
-server.listen(3000, 'lkknodejs.newmedia.tw');
