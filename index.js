@@ -58,8 +58,8 @@ server.listen(port, () => {
 var sslCreds = null;
 sslCreds = {
 //     // uncomment the following code and replace the following paths if you have SSL certificates.
-    key: fs.readFileSync('/ssl/key.pem'),
-    cert: fs.readFileSync('/ssl/certificate.pem')
+    key: fs.readFileSync('./ssl/key.pem'),
+    cert: fs.readFileSync('./ssl/certificate.pem')
 };
 if (sslCreds) {
     var server = https.createServer(sslCreds, app);
