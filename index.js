@@ -56,11 +56,11 @@ server.listen(port, () => {
 });  */
 
 var sslCreds = null;
-// sslCreds = {
+sslCreds = {
 //     // uncomment the following code and replace the following paths if you have SSL certificates.
-//     key: fs.readFileSync('/root/key.pem'),
-//     cert: fs.readFileSync('/root/certificate.pem')
-// };
+    key: fs.readFileSync('/ssl/key.pem'),
+    cert: fs.readFileSync('/ssl/certificate.pem')
+};
 if (sslCreds) {
     var server = https.createServer(sslCreds, app);
     port = 443;
