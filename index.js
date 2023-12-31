@@ -1,7 +1,16 @@
 const express = require('express');
 const app = express();
-const server = require('http').Server(app);
+//const server = require('http').Server(app);
 const io = require('socket.io')(server);
+
+
+var httpProxy = require('http-proxy');
+var apiProxy = httpProxy.createProxyServer();
+
+var cors = require('cors');
+var http = require('http');
+var https = require('https');
+var fs = require('fs');
 
 // 加入線上人數計數
 let onlineCount = 0;
@@ -41,8 +50,30 @@ io.on('connection', (socket) => {
 }); */
 
 // 監聽 port
-var port = process.env.PORT || 3000;
+/* var port = process.env.PORT || 3000;
 server.listen(port, () => {
     console.log("Server Started. http://localhost:3000");
-}); 
+});  */
 
+var sslCreds = null;
+// sslCreds = {
+//     // uncomment the following code and replace the following paths if you have SSL certificates.
+//     key: fs.readFileSync('/root/key.pem'),
+//     cert: fs.readFileSync('/root/certificate.pem')
+// };
+if (sslCreds) {
+    var server = https.createServer(sslCreds, app);
+    port = 443;
+    http.createServer(function (req, res) {
+        res.writeHead(301, { "Location": "https://" + req.headers['host'].replace('80', '443') + req.url });
+        console.log("http request, will go to >> ");
+        console.log("https://" + req.headers['host'].replace('80', '443') + req.url );
+        res.end();
+    }).listen(80);
+} else {
+    var server = http.createServer(app);
+    port = 80;
+}
+server.listen(port, '0.0.0.0',function(){
+    console.log(`Server listening on port `+port);
+});
