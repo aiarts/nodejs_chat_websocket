@@ -69,10 +69,10 @@ if (sslCreds) {
         console.log("http request, will go to >> ");
         console.log("https://" + req.headers['host'].replace('80', '443') + req.url );
         res.end();
-    }).listen(80);
+    }).listen(3000);
 } else {
     var server = http.createServer(app);
-    port = 80;
+    port = 3000;
 }
 server.listen(port, '0.0.0.0',function(){
     console.log(`Server listening on port `+port);
